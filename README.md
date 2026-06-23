@@ -11,19 +11,6 @@ El programa está estructurado utilizando una **Máquina de Estados Finita** (re
 1. **Actualización Lógica:** Verifica el estado actual del juego para calcular físicas, movimientos, colisiones geométricas (usando `checkCollisionRecs` y `checkCollisionPointRec`), y capturar las interacciones del teclado y mouse.
 2. **Renderizado:** Mediante el bloque `beginDrawing()`, limpia la pantalla y utiliza una estructura de control `case state` para dibujar exclusivamente los rectángulos, textos y texturas pertinentes al nivel o puzzle que el usuario está jugando.
 
-
-## Objetivo del Juego
-
-El objetivo principal es escapar de las distintas "salas" o zonas temáticas resolviendo rompecabezas basados en la filosofía, sintaxis y el manejo de recursos de varios lenguajes de programación. El jugador debe demostrar conocimientos sobre el manejo de memoria, tipos de datos, punteros y programación orientada a objetos para obtener las llaves que le permitirán avanzar a la prueba final.
-
-## Controles
-
-El juego está diseñado para jugarse cómodamente con el teclado y el ratón:
-
-* **Flechas del teclado (Arriba, Abajo, Izquierda, Derecha):** Permiten mover al personaje libremente por la sala central (Hub) y esquivar objetos en el minijuego de supervivencia.
-* **Clic Izquierdo del Mouse:** Permite interactuar con los botones de la interfaz. Si se mantiene presionado sobre las tarjetas de código, permite arrastrarlas y soltarlas (Drag & Drop) en las casillas de respuesta.
-* **Tecla ENTER:** Se utiliza para avanzar en las pantallas de victoria, leer las introducciones a los minijuegos y confirmar el inicio de ciertas etapas.
-
 ## Cómo hacer andar el programa
 
 Para compilar y ejecutar este juego en tu máquina, necesitas tener instalado el compilador de Nim y la librería Raylib. Sigue estos pasos:
@@ -45,19 +32,48 @@ nim c -r main.nim
 
 
 
+## Objetivo del Juego
+
+El objetivo principal es escapar de las distintas "salas" o zonas temáticas resolviendo rompecabezas basados en la filosofía, sintaxis y el manejo de recursos de varios lenguajes de programación. El jugador debe demostrar conocimientos sobre el manejo de memoria, tipos de datos, punteros y programación orientada a objetos para obtener las llaves que le permitirán avanzar a la prueba final.
+
+## Controles
+
+El juego está diseñado para jugarse cómodamente con el teclado y el ratón:
+
+* **Flechas del teclado (Arriba, Abajo, Izquierda, Derecha):** Permiten mover al personaje libremente por la sala central (Hub) y esquivar objetos en el minijuego de supervivencia.
+* **Clic Izquierdo del Mouse:** Permite interactuar con los botones de la interfaz. Si se mantiene presionado sobre las tarjetas de código, permite arrastrarlas y soltarlas (Drag & Drop) en las casillas de respuesta.
+* **Tecla ENTER:** Se utiliza para avanzar en las pantallas de victoria, leer las introducciones a los minijuegos y confirmar el inicio de ciertas etapas.
+
+
 ## Qué se puede hacer dentro del programa
 
 El juego ofrece una progresión por niveles, permitiendo interactuar con los siguientes elementos:
 
 * **Selección de Personaje:** Puedes comenzar tu aventura eligiendo jugar con un avatar masculino o femenino.
 * **Exploración del Hub Central:** Un espacio interactivo por el que te puedes mover físicamente. Contiene puertas que actúan como "candados"; no podrás entrar a Java sin antes conquistar C, ni a Haskell sin antes dominar Java.
-* **Zona C:**
+  
+### Zona C
 * *Puzzle de Tipos:* Ordenar tipos de datos primitivos (`char`, `short`, `int`, `double`) arrastrándolos según su tamaño en memoria.
 * *Puzzle de Punteros:* Conectar visualmente apuntadores (ej. `p1 = &b`) haciendo clic en la dirección de memoria de la variable correcta.
 * *Puzzle de Fuga de Memoria (Memory Leak):* Un minijuego de agilidad mental donde debes hacer clic en cajas de `free()` para liberar memoria y evitar hacer clic en `malloc()` para que la barra de memoria no se llene al 100%.
 
+### Zona Java (Requiere la Llave de C)
 
-* **Zona Java (Requiere la Llave de C):**
-* *Puzzle de Clases:* Clasificar objetos o entidades concretas arrastrándolas a su molde correspondiente (Animal, Vehículo, Persona).
-* *Puzzle de Herencia Express:* Tomar decisiones rápidas bajo presión analizando si una clase específica hereda o no hereda de un objeto padre, gestionando un contador de vidas y puntaje.
-* *Supervivencia del Garbage Collector:* Un minijuego de acción donde debes mover a tu personaje para esquivar instancias de objetos creados con la palabra reservada `new` que caen en picada. Debes sobrevivir administrando la memoria ocupada hasta que el *Garbage Collector* se active y limpie la pantalla.
+* **Puzzle de Clases:** Clasificar objetos o entidades concretas arrastrándolas a su molde correspondiente (Animal, Vehículo, Persona).
+* **Puzzle de Herencia Express:** Tomar decisiones rápidas bajo presión analizando si una clase específica hereda o no hereda de un objeto padre, gestionando un contador de vidas y puntaje.
+* **Supervivencia del Garbage Collector:** Un minijuego de acción donde debes mover a tu personaje para esquivar instancias de objetos creados con la palabra reservada `new` que caen en picada. Debes sobrevivir administrando la memoria ocupada hasta que el *Garbage Collector* se active y limpie la pantalla.
+
+### Zona Haskell (Requiere la Llave de Java)
+
+* **Puzzle de Tuberías (Pipelines):** Armar la composición correcta de funciones de orden superior arrastrando tarjetas (`filter even`, `map (+1)`, `sum`) para transformar una lista de entrada en un resultado numérico específico.
+* **Puzzle de Pattern Matching:** Conectar los patrones sintácticos fundamentales de las listas en Haskell (`[]`, `[x]`, `(x:xs)`) trazando una línea hacia la descripción de su resultado correspondiente (lista vacía, un elemento, cabeza y cola).
+* **Lambda Catcher:** Un minijuego de agilidad donde debes mover a tu personaje horizontalmente para atrapar conceptos del paradigma funcional puro (`lambda`, `map`, `filter`, `foldr`) mientras esquivas aquellos que representan mutación o ciclos iterativos (`for`, `while`, `i++`).
+
+### Zona Final - El Examen de Greco (Requiere la Llave de Haskell)
+
+* **Enfrentamiento Final:** Una evaluación dividida en cuatro fases contra el "jefe" del juego, el profesor Matías Greco, para aprobar la asignatura de Lenguajes y Paradigmas.
+* **Fase 1 (Clasificación de Sintaxis):** Arrastrar y soltar fragmentos de código fuente mezclados a sus respectivas cajas representativas de los lenguajes evaluados (C, Java y Haskell).
+* **Fase 2 (Prueba de Paciencia):** Un cuestionario de selección múltiple. Los errores disminuyen la barra de "paciencia" del profesor; si llega a cero, repruebas y debes reiniciar la fase.
+* **Fase 3 (Verdadero o Falso en Movimiento):** Evaluar afirmaciones teóricas arrastrando una tarjeta hacia la caja de Verdad o Falsedad. La dificultad radica en que el texto se mueve de izquierda a derecha y se "escapa" si tardas demasiado.
+* **Fase 4 (Persecución Meta):** Responder una ronda rápida de preguntas mientras el avatar del profesor avanza físicamente hacia el jugador. Cada respuesta correcta lo hace retroceder, pero cada error lo acerca; debes lograr 6 aciertos antes de que te alcance.
+
